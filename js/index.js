@@ -5,6 +5,7 @@ $(document).ready(function(){
 
 /*获取音乐*/
 function getChannels(){
+	/*
 	//获取音乐频道
 	$.get('http://api.jirengu.com/fm/getChannels.php')
    .done(function(channelInfo){
@@ -15,10 +16,11 @@ function getChannels(){
 	var theChannel = eval('(' + channelInfo + ')');
 	console.log(theChannel);
 	alert(theChannel.channels[0].name);
-	/*for(var i=0;i<theChannel.channels.length;i++){
+	for(var i=0;i<theChannel.channels.length;i++){
 		//alert(theChannel.channels[i].name);
 		$(".the-channels").find("ul").append("<li>"+theChannel.channels[i].name+"</li>")	
-	}*/
+	}
+	//需求
 	for(thisChannel in theChannel.channels){
 		//alert(theChannel.channels.thisChannel)
 		$(".the-channels").find("ul").append("<li data-channel='"+theChannel.channels[thisChannel].channel_id+"'>"+theChannel.channels[thisChannel].name+"</li>")
@@ -42,7 +44,7 @@ function getChannels(){
 			$(".the-audio-fm-gs").text(""+theSong.song[0].artist+"");
 		  });
 	})
-	
+	*/
 	//获取随机歌曲
 	$(".the-control-kj-sj").click(function(){
 		$.get('https://jirenguapi.applinzi.com/fm/getSong.php')
