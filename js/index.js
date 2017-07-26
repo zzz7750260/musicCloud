@@ -30,7 +30,7 @@ function getChannels(){
 		var aChannel = $(this).data('channel');
 		alert(aChannel);
 		//ajax发送获取音乐请求
-		$.get('http://api.jirengu.com/fm/getSong.php',{channel: ''+aChannel+''})
+		$.get('https://jirenguapi.applinzi.com/fm/getSong.php',{channel: ''+aChannel+''})
 		   .done(function(song){
 			console.log(song);
 			alert(typeof(song));
@@ -45,7 +45,7 @@ function getChannels(){
 	
 	//获取随机歌曲
 	$(".the-control-kj-sj").click(function(){
-		$.get('http://api.jirengu.com/fm/getSong.php')
+		$.get('https://jirenguapi.applinzi.com/fm/getSong.php')
 	   .done(function(song){
 		console.log(song)
 		var sjSong = eval('('+ song +')');
