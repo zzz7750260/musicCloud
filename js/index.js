@@ -34,7 +34,8 @@ function getChannels(){
 		alert(aChannel);
 		hqSong(aChannel);
 		alert($(".a-audio")[0].ended);	
-		return aChannel;
+		//
+		//return aChannel;
 		//ajax发送获取音乐请求
 		//jsonp解决跨域问题
 		/*
@@ -86,7 +87,7 @@ function getChannels(){
 	*/
 		aChannel = parseInt(Math.random()*40);	
 		hqSong(aChannel);
-		return aChannel;
+		//return aChannel;
 	});	
 	
 	//当歌播放结束后自动切换
