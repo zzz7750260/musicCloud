@@ -5,6 +5,7 @@ $(document).ready(function(){
 
 /*获取音乐*/
 function getChannels(){
+	var aChannel;
 	//获取音乐频道
 	$.get('https://jirenguapi.applinzi.com/fm/getChannels.php')
    .done(function(channelInfo){
@@ -29,7 +30,7 @@ function getChannels(){
 	
 		//点击选择频道获取歌曲
 	$(".the-channels").find("li").click(function(){
-		var aChannel = $(this).data('channel');
+		aChannel = $(this).data('channel');
 		alert(aChannel);
 		hqSong(aChannel);
 		alert($(".a-audio")[0].ended);	
@@ -83,21 +84,21 @@ function getChannels(){
 	  });		
 	})
 	*/
-		var aChannel = parseInt(Math.random()*40);	
-		hqSong(aChannel);	
-		return aChannel;	
+		aChannel = parseInt(Math.random()*40);	
+		hqSong(aChannel);
+		return aChannel;
 	});	
 	
 	//当歌播放结束后自动切换
 	//setinterval监控音乐播放状态，true为音乐播放结束
 	setInterval(function(aChannel){
+		//alert(aChannel);
 		//alert($(".a-audio")[0].ended);
 		if($(".a-audio")[0].ended == true){
 				//alert("播放完，下一首");
 				hqSong(aChannel);
 		}
 	},50);
-		
 }
 
 //根据频道获取歌曲（包括随机）
