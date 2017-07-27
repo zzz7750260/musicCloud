@@ -5,8 +5,8 @@ $(document).ready(function(){
 
 /*获取音乐*/
 function getChannels(){
-	var aChannel;
 	//获取音乐频道
+	var aChannel;
 	$.get('https://jirenguapi.applinzi.com/fm/getChannels.php')
    .done(function(channelInfo){
     console.log(channelInfo)
@@ -31,11 +31,11 @@ function getChannels(){
 		//点击选择频道获取歌曲
 	$(".the-channels").find("li").click(function(){
 		aChannel = $(this).data('channel');
-		alert(aChannel);
+	//	alert(aChannel);
 		hqSong(aChannel);
 		alert($(".a-audio")[0].ended);	
-		//
-		//return aChannel;
+		
+		return aChannel;
 		//ajax发送获取音乐请求
 		//jsonp解决跨域问题
 		/*
@@ -71,6 +71,8 @@ function getChannels(){
 	})
    })
 	
+	
+	
 	//获取随机歌曲
 	$(".the-control-kj-sj").click(function(){
 		/*
@@ -90,16 +92,7 @@ function getChannels(){
 		//return aChannel;
 	});	
 	
-	//当歌播放结束后自动切换
-	//setinterval监控音乐播放状态，true为音乐播放结束
-	setInterval(function(aChannel){
-		//alert(aChannel);
-		//alert($(".a-audio")[0].ended);
-		if($(".a-audio")[0].ended == true){
-				//alert("播放完，下一首");
-				hqSong(aChannel);
-		}
-	},50);
+	setInterval(function(){qhbf(aChannel)},5000);
 }
 
 //根据频道获取歌曲（包括随机）
@@ -119,3 +112,17 @@ function hqSong(theChannels){
 		}
 	})
 }
+
+//设置setInterval的方法
+function qhbf(sChannel){
+		console.log(sChannel);
+		//alert($(".a-audio")[0].ended);
+		if($(".a-audio")[0].ended == true){
+				//alert("播放完，下一首");
+				hqSong(sChannel);
+		}
+}
+	//console.log(sChannel)
+	//当歌播放结束后自动切换
+	//setinterval监控音乐播放状态，true为音乐播放结束
+	
