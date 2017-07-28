@@ -97,6 +97,7 @@ function getChannels(){
 
 //根据频道获取歌曲（包括随机）
 function hqSong(theChannels){
+	var theGcId;
 	alert(theChannels);
 	$.ajax({
 		url:'https://jirenguapi.applinzi.com/fm/getSong.php',
@@ -105,12 +106,28 @@ function hqSong(theChannels){
 		dataType:'json',
 		success:function(msg){
 			console.log(msg);
+			 theGcId = msg.song[0].sid;
 			$(".the-audio").find("audio").attr("src",""+msg.song[0].url+"");
 			$(".the-audio-fm-title").text(""+msg.song[0].title+"");
 			$(".the-audio-fm").find("img").attr("src",""+msg.song[0].picture+"");
 			$(".the-audio-fm-gs").text(""+msg.song[0].artist+"");
 		}
 	})
+	alert(theGcId);
+	//ajax获取对应歌曲的歌词
+	$.ajax({
+		url:'https://jirenguapi.applinzi.com/fm/getLyric.php',
+		type:'post',
+		data:{sid:''+theGcId+''},
+		dataType:'json',
+		success:function(gcMsg){
+			console.log(gcMsg.lyric);
+			$(".the-audio-gc").find("p").append(""+gcMsg.lyric+"");
+			
+		}
+		
+	})
+	
 }
 
 //设置setInterval的方法
@@ -120,6 +137,7 @@ function qhbf(sChannel){
 		if($(".a-audio")[0].ended == true){
 				//alert("播放完，下一首");
 				hqSong(sChannel);
+				$(".the-audio-gc").find("p").empty();
 		}
 }
 	//console.log(sChannel)
