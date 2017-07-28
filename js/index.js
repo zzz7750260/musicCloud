@@ -35,7 +35,7 @@ function getChannels(){
 		hqSong(aChannel);
 		alert($(".a-audio")[0].ended);	
 		
-		return aChannel;
+		//return aChannel;
 		//ajax发送获取音乐请求
 		//jsonp解决跨域问题
 		/*
@@ -97,26 +97,29 @@ function getChannels(){
 
 //根据频道获取歌曲（包括随机）
 function hqSong(theChannels){
-	var theGcId;
+	var theGcId;   //歌的id，只要根据id获取歌词
+	var theGcIrc  //歌词地址
 	alert(theChannels);
 	$.ajax({
 		url:'https://jirenguapi.applinzi.com/fm/getSong.php',
 		data:{channel:''+theChannels+''},
 		type:'get',
 		dataType:'json',
+		async:false,//异步请求,这里需要需要ajax的异步请求，在服务器端响应完后再进行一下操作
 		success:function(msg){
 			console.log(msg);
 			 theGcId = msg.song[0].sid;
+			 alert(theGcId+"第一次");
 			$(".the-audio").find("audio").attr("src",""+msg.song[0].url+"");
 			$(".the-audio-fm-title").text(""+msg.song[0].title+"");
 			$(".the-audio-fm").find("img").attr("src",""+msg.song[0].picture+"");
 			$(".the-audio-fm-gs").text(""+msg.song[0].artist+"");
 		}
 	})
-	alert(theGcId);
+	alert(theGcId+"第二次");
 	//ajax获取对应歌曲的歌词
 	$.ajax({
-		url:'https://jirenguapi.applinzi.com/fm/getLyric.php',
+		url:'https://jirenguapi.applinzi.com/fm/getLyric.php',//饥人谷的获取歌词地址
 		type:'post',
 		data:{sid:''+theGcId+''},
 		dataType:'json',
