@@ -1,0 +1,16 @@
+{
+    "bg": [
+        {
+            "theBg": "./img/bg1.jpg"
+        }, 
+        {
+            "theBg": "./img/bg2.jpg"
+        }, 
+        {
+            "theBg": "./img/bg3.jpg"
+        }, 
+        {
+            "theBg": "./img/bg4.jpg"
+        }
+    ]
+}

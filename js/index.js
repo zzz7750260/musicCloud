@@ -99,6 +99,9 @@ function getChannels(){
 function hqSong(theChannels){
 	var theGcId;   //歌的id，只要根据id获取歌词
 	var theGcIrc  //歌词地址
+	bgChange();  //当切换歌曲的时候同时切换图片
+	$(".the-audio-gc").find("p").empty(); //当切换歌时将原来的歌词清空
+	
 	alert(theChannels);
 	$.ajax({
 		url:'https://jirenguapi.applinzi.com/fm/getSong.php',
@@ -140,10 +143,48 @@ function qhbf(sChannel){
 		if($(".a-audio")[0].ended == true){
 				//alert("播放完，下一首");
 				hqSong(sChannel);
-				$(".the-audio-gc").find("p").empty();
+				
 		}
 }
 	//console.log(sChannel)
 	//当歌播放结束后自动切换
 	//setinterval监控音乐播放状态，true为音乐播放结束
+
+	
+//当音乐完了之后进行切换图片
+function bgChange(){
+	//var l = bg.length;
+	//alert(l);
+	//var cImg;
+	$.ajax({
+		url:'./json/musicBg.json',
+		type:'get',
+		dataType:'json',
+		//async:false,//异步请求,这里需要需要ajax的异步请求，在服务器端响应完后再进行一下操作
+		success:function($data){
+			alert('这个是切换图片');
+			var l = $data.bg.length;			
+			var s = parseInt(Math.random()*l);
+			alert(s);
+			console.log($data.bg[s].theBg);
+			alert($data.bg[s].theBg);
+			var cImg = $data.bg[s].theBg
+			//alert($data.bg);
+			//console.log($data);
+			alert(cImg);
+			$(".the-background").css({
+				'backgroundImage':'url('+cImg+')',
+			})
+		},
+		error:function($data){
+			alert('这个是弹出失败');
+		}
+	})
+		/*
+			alert(cImg);
+			$(".the-background").css({
+				'backgroundImage':'url('+cImg+')',
+			})
+			*/
+}
 	
