@@ -8,8 +8,26 @@
     <title>音乐云-在线音乐播放器</title>
 	
     <!-- Bootstrap 
-    <link href="css/bootstrap.min.css" rel="stylesheet">-->
-	<link href="./css/index.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">-->		
+	<link href="./css/index.css?v=1" rel="stylesheet">
+	<!--引入阿里图标-->
+	<link href="//at.alicdn.com/t/font_401482_ukbr69soycaqbyb9.css" rel="stylesheet">		
+	<!--引入less-->
+	<link rel="stylesheet/less" type="text/css" href="./less/styles.less?v=3" />
+		<script>
+	  less = {
+		env: "development",
+		async: false,
+		fileAsync: false,
+		poll: 1000,
+		functions: {},
+		dumpLineNumbers: "comments",
+		relativeUrls: false,
+		rootpath: ":/a.com/"
+	  };
+	</script>
+	<script src="./js/less.js"></script>
+	<!--<script>less.watch();</script>-->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -36,6 +54,18 @@
 				<h2>控制器</h2>
 				<div class="the-control-kj">
 					<button class="the-control-kj-sj">随机</button>
+				<div class="box">
+					引入less案例
+					aaa
+						<div>vvv</div>
+					</div>
+					
+				</div>
+				<div class="the-control-k">
+					<div class="the_control_start the_control_common common"><i class="iconfont icon-bofangqizanting"></i></div>
+					<div class="the_control_stop the_control_common common"><i class="iconfont icon-icon-prev-song">a'a</i></div>
+					<div class="the_control_left the_control_common common"><i></i></div>
+					<div class="the_control_right the_control_common common"><i></i></div>
 				</div>
 			</div>	
 			
@@ -58,7 +88,7 @@
 					<div class="the-audio-gc">
 						<h4>歌词</h4>
 						<p>
-						
+							
 						</p>
 					</div>
 				</div>
