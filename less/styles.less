@@ -18,16 +18,51 @@
 
 /*命名*/
 @c: .the_control;
+@audio: .the_audio;
 
 /*颜色*/
-@coba: #3bafda;
+@coba: #F6F5EF;
+@cobotton: #756957;
+
+/*样式值*/
+@sfonts: 24px;
 
 
+/*函数*/
+.buttonw(@sfonts; @x){
+	padding: @sfonts - @x;
+}
+.boxshadow(@x;@y;@z;@color){
+	box-shadow:@arguments;
+	-moz-box-shadow:@arguments;
+}
+
+.audioCom(@w){
+	float:left;
+	width:@w;
+}
+
+/*应用*/
 @{c}_common{
-	background-color:lighten(@coba,20%);
+	/*background-color:lighten(@coba,20%);*/
+	background-color:@coba;
 	display:inline-block;
 	border-radius:50%;
+	.buttonw(24px;8px);
+	color:darken(@cobotton,10%);
+	.boxshadow(0px;2px;15px;#888);
 	>i{
-		color:darken(@coba,10%);
+		
+		font-size:@sfonts;
+	}
+	&:hover{
+		background-color:lighten(@coba,10%);
+		color:darken(@cobotton,20%);
 	}
 }
+
+.the_audio_left{
+	.audioCom(50%);
+}
+
+@{audio}_right:extend(.the_audio_left){}
