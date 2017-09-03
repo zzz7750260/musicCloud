@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	getChannels();
-	
+	musicControl();
 })
 
 /*获取音乐*/
@@ -186,5 +186,24 @@ function bgChange(){
 				'backgroundImage':'url('+cImg+')',
 			})
 			*/
+}
+
+function musicControl(){
+	var playZy = {
+		theZt:function(){
+			musicControlZt();
+		}
+	}
+	playZy.theZt();
+	
+}
+
+function musicControlZt(){
+	setInterval(function(){
+		var s = $(".a-audio")[0].buffered.end(0);
+		alert("弹出状态栏");
+		alert(s);
+		console.log(s);
+	},5000);	
 }
 	

@@ -23,15 +23,21 @@
 /*颜色*/
 @coba: #F6F5EF;
 @cobotton: #756957;
+@jdControlcolor: #918c82;
 
 /*样式值*/
 @sfonts: 24px;
-
 
 /*函数*/
 .buttonw(@sfonts; @x){
 	padding: @sfonts - @x;
 }
+
+.buttonwk(@c){
+	width: @c;
+	height: @c;
+}
+
 .boxshadow(@x;@y;@z;@color){
 	box-shadow:@arguments;
 	-moz-box-shadow:@arguments;
@@ -42,15 +48,29 @@
 	width:@w;
 }
 
+.audioComHov(@s){
+	transform:scale(@s);
+}
+
+.jdControlK(@w;@h;@s;@t;@r){
+	background-color:@jdControlcolor;
+	height:@h;
+	width:@w;
+	position:@s;
+	margin-top:@t;
+	border-radius:@r;
+}
+
 /*应用*/
 @{c}_common{
 	/*background-color:lighten(@coba,20%);*/
 	background-color:@coba;
 	display:inline-block;
-	border-radius:50%;
-	.buttonw(24px;8px);
 	color:darken(@cobotton,10%);
 	.boxshadow(0px;2px;15px;#888);
+	margin:0px 5px;
+	border-radius:50%;
+	.buttonw(24px, 9px);	
 	>i{
 		
 		font-size:@sfonts;
@@ -58,8 +78,27 @@
 	&:hover{
 		background-color:lighten(@coba,10%);
 		color:darken(@cobotton,20%);
+		.audioComHov(1.1);
 	}
 }
+
+@{c}_left{
+	.audioCom(40%);
+}
+@{c}_right{
+	.audioCom(60%);
+}
+
+@{c}_k_jd_k{
+	.jdControlK(90%,8px,relative,25px,5px);
+	&_hc{
+		.jdControlK(80%,8px,absolute,0px,2px);
+		background-color:darken(@jdControlcolor,20%);
+	}
+}
+
+
+
 
 .the_audio_left{
 	.audioCom(50%);
