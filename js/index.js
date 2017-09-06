@@ -113,7 +113,7 @@ function hqSong(theChannels){
 			console.log(msg);
 			 theGcId = msg.song[0].sid;
 			 alert(theGcId+"第一次");
-			$(".the-audio").find("audio").attr("src",""+msg.song[0].url+"");
+			$(".a-audio").attr("src",""+msg.song[0].url+"");
 			$(".the-audio-fm-title").text(""+msg.song[0].title+"");
 			$(".the-audio-fm").find("img").attr("src",""+msg.song[0].picture+"");
 			$(".the-audio-fm-gs").text(""+msg.song[0].artist+"");
@@ -199,11 +199,19 @@ function musicControl(){
 }
 
 function musicControlZt(){
+	var b;//缓存的百分百
+	//console.log(z); 
 	setInterval(function(){
-		var s = $(".a-audio")[0].buffered.end(0);
-		alert("弹出状态栏");
-		alert(s);
-		console.log(s);
+		var s = $(".a-audio")[0].buffered.end(0);//获取当前缓冲的秒数
+		var z = $(".a-audio")[0].duration;//获取歌曲的总秒数
+		//alert("弹出状态栏");
+		//alert(s);
+		b = s/z*100+"%";
+		//alert(b);
+		console.log(b);
+		$(".the_control_k_jd_k_hc").css({
+			"width":b,
+		})//改变缓存条
 	},5000);	
 }
 	

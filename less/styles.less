@@ -61,6 +61,13 @@
 	border-radius:@r;
 }
 
+.jdControlHc(@s;@d){
+	transition:all @s ease @d;
+	-moz-transition: all @s ease @d;
+	-webkit-transition: all @s ease @d;
+	-o-transition: all @s ease @d;
+}
+
 /*应用*/
 @{c}_common{
 	/*background-color:lighten(@coba,20%);*/
@@ -94,6 +101,7 @@
 	&_hc{
 		.jdControlK(80%,8px,absolute,0px,2px);
 		background-color:darken(@jdControlcolor,20%);
+		.jdControlHc(0.5s,0s);
 	}
 }
 
