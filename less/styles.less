@@ -24,6 +24,7 @@
 @coba: #F6F5EF;
 @cobotton: #756957;
 @jdControlcolor: #918c82;
+@jdControlButcolor: #ff0000;
 
 /*样式值*/
 @sfonts: 24px;
@@ -68,6 +69,15 @@
 	-o-transition: all @s ease @d;
 }
 
+.jdControlhlbtn(@w;@d;@t;@l;){
+	position:absolute;
+	width:@w;
+	height:@w;
+	border-radius:@d;
+	top:@t;
+	left:-@w/2;
+}
+
 /*应用*/
 @{c}_common{
 	/*background-color:lighten(@coba,20%);*/
@@ -103,9 +113,20 @@
 		background-color:darken(@jdControlcolor,20%);
 		.jdControlHc(0.5s,0s);
 	}
+	&_hl{
+		.jdControlK(60%,8px,absolute,0px,5px);
+		background-color:lighten(@jdControlButcolor,20%);
+		&_btn{
+			.jdControlhlbtn(20px,50%,-5px,'');
+			background-color:lighten(@jdControlButcolor,10%);
+		}
+	}
+	
 }
 
-
+.btn_active{
+	border:1px solid #ffff00;
+}
 
 
 .the_audio_left{
