@@ -129,8 +129,8 @@ function hqSong(theChannels){
 	alert("图片地址："+theGcImg);
 	$(".a-audio").attr("src",""+theGcSrc+"");
 	$(".the-audio-fm-title").text(""+theGcTitle+"");
-	$(".the-audio-fm").find("img").attr("src",""+theGcImg+"");
-	$(".the-audio-fm-gs").text(""+theGcArtist+"");
+	$(".the-audio-fm").find("img").attr("src",theGcImg);
+	$(".the-audio-fm-gs").text(theGcArtist);
 	alert(theGcId+"第二次");
 	//ajax获取对应歌曲的歌词
 	$.ajax({
