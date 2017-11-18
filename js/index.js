@@ -104,7 +104,6 @@ function hqSong(theChannels){
 	var theGcArtist; //歌的专辑
 	var theGcSrc  //歌的地址
 	
-	bgChange();  //当切换歌曲的时候同时切换图片
 	$(".the-audio-gc").find("p").empty(); //当切换歌时将原来的歌词清空
 	
 	alert(theChannels);
@@ -123,16 +122,16 @@ function hqSong(theChannels){
 			 theGcArtist = msg.song[0].artist;
 			 alert(theGcId+"第一次");
 			 alert(msg.song[0].picture);
+			 	//异步请求后，在成功后再进行dom操作
+			alert("图片地址："+theGcImg);
+			alert("图片地址："+theGcImg);
+			alert("图片地址："+theGcTitle);
+			$(".a-audio").attr("src",""+theGcSrc+"");
+			$(".the-audio-fm-title").text(""+theGcTitle+"");
+			$(".the-audio-fm").find("img").attr("src",""+theGcImg+"");
+			$(".the-audio-fm-gs").text(theGcArtist);
 		}
 	})
-	//异步请求后，在成功后再进行dom操作
-	alert("图片地址："+theGcImg);
-	alert("图片地址："+theGcImg);
-	alert("图片地址："+theGcTitle);
-	$(".a-audio").attr("src",""+theGcSrc+"");
-	$(".the-audio-fm-title").text(""+theGcTitle+"");
-	$(".the-audio-fm").find("img").attr("src",""+theGcImg+"");
-	$(".the-audio-fm-gs").text(theGcArtist);
 	alert(theGcId+"第二次");
 	//ajax获取对应歌曲的歌词
 	$.ajax({
@@ -147,7 +146,7 @@ function hqSong(theChannels){
 		}
 		
 	})
-	
+	bgChange();  //当切换歌曲的时候同时切换图片
 }
 
 //设置setInterval的方法
