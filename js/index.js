@@ -122,10 +122,11 @@ function hqSong(theChannels){
 			 theGcTitle = msg.song[0].title;
 			 theGcArtist = msg.song[0].artist;
 			 alert(theGcId+"第一次");
-			 alert(+msg.song[0].picture);
+			 alert(msg.song[0].picture);
 		}
 	})
 	//异步请求后，在成功后再进行dom操作
+	alert("图片地址："+theGcImg);
 	$(".a-audio").attr("src",""+theGcSrc+"");
 	$(".the-audio-fm-title").text(""+theGcTitle+"");
 	$(".the-audio-fm").find("img").attr("src",""+theGcImg+"");
