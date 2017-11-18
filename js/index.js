@@ -113,6 +113,7 @@ function hqSong(theChannels){
 			console.log(msg);
 			 theGcId = msg.song[0].sid;
 			 alert(theGcId+"第一次");
+			 alert("<br/>"+msg.song[0].picture);
 			$(".a-audio").attr("src",""+msg.song[0].url+"");
 			$(".the-audio-fm-title").text(""+msg.song[0].title+"");
 			$(".the-audio-fm").find("img").attr("src",""+msg.song[0].picture+"");
