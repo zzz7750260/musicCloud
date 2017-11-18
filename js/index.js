@@ -127,9 +127,11 @@ function hqSong(theChannels){
 	})
 	//异步请求后，在成功后再进行dom操作
 	alert("图片地址："+theGcImg);
+	alert("图片地址："+theGcImg);
+	alert("图片地址："+theGcTitle);
 	$(".a-audio").attr("src",""+theGcSrc+"");
 	$(".the-audio-fm-title").text(""+theGcTitle+"");
-	$(".the-audio-fm").find("img").attr("src",theGcImg);
+	$(".the-audio-fm").find("img").attr("src",""+theGcImg+"");
 	$(".the-audio-fm-gs").text(theGcArtist);
 	alert(theGcId+"第二次");
 	//ajax获取对应歌曲的歌词
