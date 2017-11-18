@@ -104,7 +104,7 @@ function hqSong(theChannels){
 	var theGcArtist; //歌的专辑
 	var theGcSrc  //歌的地址
 	
-	$(".the-audio-gc").find("p").empty(); //当切换歌时将原来的歌词清空
+	$(".the_audio_right_gc").find("p").empty(); //当切换歌时将原来的歌词清空
 	
 	alert(theChannels);
 	$.ajax({
@@ -121,15 +121,17 @@ function hqSong(theChannels){
 			 theGcTitle = msg.song[0].title;
 			 theGcArtist = msg.song[0].artist;
 			 alert(theGcId+"第一次");
-			 alert(msg.song[0].picture);
+			// alert(msg.song[0].picture);
 			 	//异步请求后，在成功后再进行dom操作
 			alert("图片地址："+theGcImg);
-			alert("图片地址："+theGcImg);
-			alert("图片地址："+theGcTitle);
+			//$(".a-audio").attr("src",""+theGcSrc+"");
+			//$(".the-audio-fm-title").text(""+theGcTitle+"");
+			//$(".the-audio-fm").find("img").attr("src",""+theGcImg+"");
+			//$(".the-audio-fm-gs").text(theGcArtist);
 			$(".a-audio").attr("src",""+theGcSrc+"");
-			$(".the-audio-fm-title").text(""+theGcTitle+"");
-			$(".the-audio-fm").find("img").attr("src",""+theGcImg+"");
-			$(".the-audio-fm-gs").text(theGcArtist);
+			$(".the_audio_left_fm_title").text(""+theGcTitle+"");
+			$(".the_audio_left_fm").find("img").attr("src",""+theGcImg+"");
+			$(".the_audio_left_fm_gs").text(""+theGcArtist+"");
 		}
 	})
 	alert(theGcId+"第二次");
@@ -141,7 +143,7 @@ function hqSong(theChannels){
 		dataType:'json',
 		success:function(gcMsg){
 			console.log(gcMsg.lyric);
-			$(".the-audio-gc").find("p").append(""+gcMsg.lyric+"");
+			$(".the_audio_right_gc").find("p").append(""+gcMsg.lyric+"");
 			
 		}
 		
