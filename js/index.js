@@ -228,10 +228,10 @@ function musicControlZt(){
 		})//改变缓存条
 		//alert(b);
 		console.log(parseFloat(b));
-		if(parseFloat(b) >= 100){
+		/*if(parseFloat(b) >= 100){
 			alert("加载完");
 			clearInterval(time);
-		}
+		}*/
 	},5000);
 	alert("当前比为:"+b)
 	//console.log(parseFloat(b));
