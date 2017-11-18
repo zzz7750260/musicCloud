@@ -114,12 +114,13 @@ function hqSong(theChannels){
 			 theGcId = msg.song[0].sid;
 			 alert(theGcId+"第一次");
 			 alert("<br/>"+msg.song[0].picture);
-			$(".a-audio").attr("src",""+msg.song[0].url+"");
-			$(".the-audio-fm-title").text(""+msg.song[0].title+"");
-			$(".the-audio-fm").find("img").attr("src",""+msg.song[0].picture+"");
-			$(".the-audio-fm-gs").text(""+msg.song[0].artist+"");
 		}
 	})
+	//异步请求后，在成功后再进行dom操作
+	$(".a-audio").attr("src",""+msg.song[0].url+"");
+	$(".the-audio-fm-title").text(""+msg.song[0].title+"");
+	$(".the-audio-fm").find("img").attr("src",""+msg.song[0].picture+"");
+	$(".the-audio-fm-gs").text(""+msg.song[0].artist+"");
 	alert(theGcId+"第二次");
 	//ajax获取对应歌曲的歌词
 	$.ajax({
