@@ -144,11 +144,17 @@ function hqSong(theChannels){
 		success:function(gcMsg){
 			console.log(gcMsg.lyric);
 			$(".the_audio_right_gc").find("p").append(""+gcMsg.lyric+"");
-			
+			gcSplit(theGc);
 		}
 		
 	})
 	bgChange();  //当切换歌曲的时候同时切换图片
+}
+
+//歌词分段
+function gcSplit(theGc){
+	var lrcArr = theGc.splice("\n");
+	console.log(lrcArr);
 }
 
 //设置setInterval的方法
