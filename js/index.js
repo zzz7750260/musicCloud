@@ -146,7 +146,7 @@ function hqSong(theChannels){
 			$(".the_audio_right_gc").find("p").append(""+gcMsg.lyric+"");
 			//console.log(gcMsg);
 			console.log("这个是分段========================");
-			gcSplit(gcMsg.lyric);
+			gcSplit2(gcMsg.lyric);
 		}
 		
 	})
@@ -178,6 +178,28 @@ function gcSplit(theGc){
 		return lrcObj;
 		//console.log(lrcObj);
 	}
+}
+
+//歌词分段2
+function gcSplit2(theGc){
+	var lrcArrs = theGc.split("\n");
+	var lrcObj = {};
+	console.log(lrcArrs);
+	for(var i = 0; i<lrcArrs.length; i++){
+		var lrcArr = decodeURIComponent(lrcArrs[i]);
+		var timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g;
+		var timeRegExparr = lrcArr.match(timeReg);
+		if(!timeRegExpArr)continue;
+		var clause = lrcArr.replace(timeReg,'');
+		for(var k = 0,h = timeRegExpArr.length;k < h;k++) {
+			var t = timeRegExpArr[k];
+			var min = Number(String(t.match(/\[\d*/i)).slice(1)),
+				sec = Number(String(t.match(/\:\d*/i)).slice(1));
+			var time = min * 60 + sec;
+			lrcObj[time] = clause;
+		}
+	}
+	return lrcObj;
 }
 
 //设置setInterval的方法
