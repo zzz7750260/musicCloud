@@ -154,7 +154,7 @@ function hqSong(theChannels){
 
 //歌词分段
 function gcSplit(theGc){
-	var lrcArr = theGc.splice("\n");
+	var lrcArr = theGc.split("\n");
 	console.log(lrcArr);
 }
 
