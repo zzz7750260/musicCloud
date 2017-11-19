@@ -144,7 +144,8 @@ function hqSong(theChannels){
 		success:function(gcMsg){
 			console.log(gcMsg.lyric);
 			$(".the_audio_right_gc").find("p").append(""+gcMsg.lyric+"");
-			console.log(gcMsg);
+			//console.log(gcMsg);
+			console.log("这个是分段========================");
 			gcSplit(gcMsg.lyric);
 		}
 		
