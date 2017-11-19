@@ -156,7 +156,7 @@ function hqSong(theChannels){
 function gcSplit(theGc){
 	var lrcArrs = theGc.split("\n");
 	var lrcObj = {};
-	console.log(lrcArr);
+	console.log(lrcArrs);
 	for(var i = 0; i<lrcArrs.length; i++){
 		var lrcArr = decodeURIComponent(lrcArrs[i]);
 		var timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g;
