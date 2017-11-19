@@ -154,8 +154,29 @@ function hqSong(theChannels){
 
 //歌词分段
 function gcSplit(theGc){
-	var lrcArr = theGc.split("\n");
+	var lrcArrs = theGc.split("\n");
+	var lrcObj = {};
 	console.log(lrcArr);
+	for(var i = 0; i<lrcArrs.length; i++){
+		var lrcArr = decodeURIComponent(lrcArrs[i]);
+		var timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g;
+		var timeRegExparr = lrcArr.match(timeReg);
+		if(timeRegExparr){
+			var clause = lrcArr.replace(timeReg,'');
+			for(var k = 0; k < timeRegExparr.length; k++){
+				var t = timeRegExparr[k];
+				var min = Number(String(t.match(/\[\d*/i)).slice(1));
+				var sec = Number(String(t.match(/\[\d*/i)).slice(1));
+				var time = min * 60 + sec;
+				lrcObj[time] = clause;
+			}
+		}
+		else{
+			continue;
+		}
+		return lrcObj;
+		//console.log(lrcObj);
+	}
 }
 
 //设置setInterval的方法
