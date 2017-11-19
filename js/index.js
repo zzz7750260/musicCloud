@@ -144,7 +144,7 @@ function hqSong(theChannels){
 		success:function(gcMsg){
 			console.log(gcMsg.lyric);
 			$(".the_audio_right_gc").find("p").append(""+gcMsg.lyric+"");
-			gcSplit(theGc);
+			gcSplit(gcMsg);
 		}
 		
 	})
