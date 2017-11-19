@@ -145,7 +145,7 @@ function hqSong(theChannels){
 			console.log(gcMsg.lyric);
 			$(".the_audio_right_gc").find("p").append(""+gcMsg.lyric+"");
 			//console.log(gcMsg);
-			console.log("这个是分段========================");
+			console.log("这个是分段2222========================");
 			gcSplit2(gcMsg.lyric);
 		}
 		
@@ -188,7 +188,7 @@ function gcSplit2(theGc){
 	for(var i = 0; i<lrcArrs.length; i++){
 		var lrcArr = decodeURIComponent(lrcArrs[i]);
 		var timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g;
-		var timeRegExparr = lrcArr.match(timeReg);
+		var timeRegExpArr = lrcArr.match(timeReg);
 		if(!timeRegExpArr)continue;
 		var clause = lrcArr.replace(timeReg,'');
 		for(var k = 0,h = timeRegExpArr.length;k < h;k++) {
