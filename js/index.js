@@ -146,7 +146,7 @@ function hqSong(theChannels){
 			$(".the_audio_right_gc").find("p").append(""+gcMsg.lyric+"");
 			//console.log(gcMsg);
 			console.log("这个是分段2222========================");
-			gcSplit2(gcMsg.lyric);
+			console.log(gcSplit2(gcMsg.lyric));
 		}
 		
 	})
