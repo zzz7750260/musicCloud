@@ -147,13 +147,16 @@ function hqSong(theChannels){
 			//console.log(gcMsg);
 			console.log("这个是分段2222========================");
 			console.log(gcSplit2(gcMsg.lyric));
+			var gcArr = gcSplit2(gcMsg.lyric)//获取歌词数值	
+			gcXr(gcArr);
+			
 		}
 		
 	})
 	bgChange();  //当切换歌曲的时候同时切换图片
 }
 
-//歌词分段
+//歌词分段成数组
 function gcSplit(theGc){
 	var lrcArrs = theGc.split("\n");
 	var lrcObj = {};
@@ -180,7 +183,9 @@ function gcSplit(theGc){
 	}
 }
 
-//歌词分段2
+
+
+//歌词分段2 歌词分段成数组
 function gcSplit2(theGc){
 	var lrcArrs = theGc.split("\n");
 	var lrcObj = {};
@@ -201,6 +206,19 @@ function gcSplit2(theGc){
 	}
 	return lrcObj;
 }
+
+
+//歌词渲染
+function gcXr(lrcObjArr){
+	var k = lrcObjArr.length;
+	lrcObjArr.each(function(index,item){
+		console.log(index);
+		console.log(item);
+		$(".the_audio_right_gc").find("ul").append("<li class='gcKey"+index+"'>"+item+"</li>")
+		
+	})
+}
+
 
 //设置setInterval的方法
 function qhbf(sChannel){
