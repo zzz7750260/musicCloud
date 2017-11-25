@@ -211,7 +211,7 @@ function gcSplit2(theGc){
 //歌词渲染
 function gcXr(lrcObjArr){
 	var k = lrcObjArr.length;
-	lrcObjArr.each(function(index,item){
+	$.each(lrcObjArr,function(index,item){
 		console.log(index);
 		console.log(item);
 		$(".the_audio_right_gc").find("ul").append("<li class='gcKey"+index+"'>"+item+"</li>")
