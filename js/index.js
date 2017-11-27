@@ -234,6 +234,11 @@ function gcgd(){
 	console.log(gcCurrentTime);
 	var pd = $(".the_audio_right_gc_k_nr").find("li").hasClass("gcKey"+gcCurrentTime+"");
 	console.log(pd);
+	if(pd == true){
+		var gcLiHeight = $(".the_audio_right_gc_k_nr").find(".gcKey"+gcCurrentTime+"").height();
+		$(".the_audio_right_gc_k_nr").find("ul").css("transform","translateY("+(gcLiHeight/3)+"px)")
+		
+	}
 }
 
 
