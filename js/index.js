@@ -223,7 +223,7 @@ function gcXr(lrcObjArr){
 //audio的timeupdate时间，驱动歌词的滚动
 function timeupdateSj(){
 	//
-	$(".a-audio")[0].("timeupdate",gcgd)
+	$(".a-audio")[0].bind("timeupdate",gcgd)
 	
 }
 
