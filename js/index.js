@@ -230,8 +230,10 @@ function timeupdateSj(){
 //歌词滚动
 function gcgd(){
 	var gcTime = this.currentTime;
-	console.log(gcTime);
-	
+	var gcCurrentTime = Math.round(gcTime);
+	console.log(gcCurrentTime);
+	var pd = $(".the_audio_right_gc_k_nr").find("li").hasClass("gcKey"+gcCurrentTime+"");
+	console.log(pd);
 }
 
 
