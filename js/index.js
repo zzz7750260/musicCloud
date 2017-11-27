@@ -104,7 +104,7 @@ function hqSong(theChannels){
 	var theGcArtist; //歌的专辑
 	var theGcSrc  //歌的地址
 	
-	$(".the_audio_right_gc").find("p").empty(); //当切换歌时将原来的歌词清空
+	$(".the_audio_right_gc_k_nr").find("ul").empty(); //当切换歌时将原来的歌词清空
 	
 	alert(theChannels);
 	$.ajax({
@@ -143,13 +143,13 @@ function hqSong(theChannels){
 		dataType:'json',
 		success:function(gcMsg){
 			console.log(gcMsg.lyric);
-			$(".the_audio_right_gc").find("p").append(""+gcMsg.lyric+"");
+			//$(".the_audio_right_gc").find("p").append(""+gcMsg.lyric+"");
 			//console.log(gcMsg);
 			console.log("这个是分段2222========================");
 			console.log(gcSplit2(gcMsg.lyric));
 			var gcArr = gcSplit2(gcMsg.lyric)//获取歌词数值	
 			gcXr(gcArr);
-			
+			timeupdateSj();
 		}
 		
 	})
@@ -214,9 +214,24 @@ function gcXr(lrcObjArr){
 	$.each(lrcObjArr,function(index,item){
 		console.log(index);
 		console.log(item);
-		$(".the_audio_right_gc").find("ul").append("<li class='gcKey"+index+"'>"+item+"</li>")
+		$(".the_audio_right_gc_k_nr").find("ul").append("<li class='gcKey"+index+"'>"+item+"</li>")
 		
 	})
+}
+
+
+//audio的timeupdate时间，驱动歌词的滚动
+function timeupdateSj(){
+	//
+	$(".a-audio")[0].("timeupdate",gcgd)
+	
+}
+
+//歌词滚动
+function gcgd(){
+	var gcTime = this.currentTime;
+	console.log(gcTime);
+	
 }
 
 

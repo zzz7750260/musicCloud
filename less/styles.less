@@ -98,13 +98,15 @@
 		.audioComHov(1.1);
 	}
 }
-
+/*
 @{c}_left{
 	.audioCom(40%);
 }
+
 @{c}_right{
 	.audioCom(60%);
 }
+*/
 
 @{c}_k_jd_k{
 	.jdControlK(90%,8px,relative,25px,5px);
@@ -133,4 +135,18 @@
 	.audioCom(50%);
 }
 
-@{audio}_right:extend(.the_audio_left){}
+@{audio}_right:extend(.the_audio_left){
+	&_gc{
+		color:#ff0000;	
+		&_k{		
+			&_nr{
+				ul{
+					padding:0px;
+					li{
+						list-style-type:none;
+					}
+				}
+			}
+		}
+	}
+}
