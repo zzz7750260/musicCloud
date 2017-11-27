@@ -232,7 +232,7 @@ function gcgd(){
 	var gcTime = this.currentTime;
 	var gcCurrentTime = Math.round(gcTime);
 	console.log(gcCurrentTime);
-	var pyHeight = 0 //获取偏移量
+	var pyHeight; //获取偏移量
 	var pd = $(".the_audio_right_gc_k_nr").find("li").hasClass("gcKey"+gcCurrentTime+"");
 	console.log(pd);
 	if(pd == true){
