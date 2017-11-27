@@ -232,13 +232,14 @@ function gcgd(){
 	var gcTime = this.currentTime;
 	var gcCurrentTime = Math.round(gcTime);
 	console.log(gcCurrentTime);
+	var pyHeight = 0 //获取偏移量
 	var pd = $(".the_audio_right_gc_k_nr").find("li").hasClass("gcKey"+gcCurrentTime+"");
 	console.log(pd);
 	if(pd == true){
 		var gcLiHeight = $(".the_audio_right_gc_k_nr").find(".gcKey"+gcCurrentTime+"").height();
-		$(".the_audio_right_gc_k_nr").find("ul").css("transform","translateY("+(gcLiHeight/3)+"px)")
-		
+		pyHeight = pyHeight - gcLiHeight	
 	}
+	$(".the_audio_right_gc_k_nr").find("ul").css("transform","translateY("+pyHeight+"px)")
 }
 
 
