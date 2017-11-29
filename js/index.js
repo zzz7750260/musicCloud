@@ -149,7 +149,7 @@ function hqSong(theChannels){
 			console.log(gcSplit2(gcMsg.lyric));
 			var gcArr = gcSplit2(gcMsg.lyric)//获取歌词数值	
 			gcXr(gcArr);
-			timeupdateSj();
+			timeupdateSj();//播放器播放时间
 		}
 		
 	})
@@ -231,13 +231,16 @@ function timeupdateSj(){
 function gcgd(){
 	var gcTime = this.currentTime;
 	var gcCurrentTime = Math.round(gcTime);
+	var gcDuration = $(".a-audio")[0].duration  //获取歌总时间
+	var gcTimeP = gcTime/gcDuration*100+"%" // 当前播放进度百分比
 	console.log(gcCurrentTime);
-	var pyHeight; //获取偏移量
+	$(".the_audio_right_gc_k_nr").find("ul").css("transform","translateY("+(-gcTimeP)+")")
+	//var pyHeight; //获取偏移量
 	var pd = $(".the_audio_right_gc_k_nr").find("li").hasClass("gcKey"+gcCurrentTime+"");
 	console.log(pd);
 	if(pd == true){
-		var gcLiHeight = $(".the_audio_right_gc_k_nr").find(".gcKey"+gcCurrentTime+"").height();
-		pyHeight = pyHeight - gcLiHeight	
+		//var gcLiHeight = $(".the_audio_right_gc_k_nr").find(".gcKey"+gcCurrentTime+"").height();
+		//pyHeight = 0 - gcLiHeight	
 	}
 	$(".the_audio_right_gc_k_nr").find("ul").css("transform","translateY("+pyHeight+"px)")
 }
