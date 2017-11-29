@@ -232,11 +232,11 @@ function gcgd(){
 	var gcTime = this.currentTime;
 	var gcCurrentTime = Math.round(gcTime);
 	var gcDuration = $(".a-audio")[0].duration  //获取歌总时间
-	var gcTimeP = gcTime/gcDuration*100+"%" // 当前播放进度百分比
+	var gcTimeP = -(gcTime/gcDuration*100)+"%" // 当前播放进度百分比
 	console.log(gcDuration);
 	console.log(gcDuration);
 	console.log(gcTimeP);
-	$(".the_audio_right_gc_k_nr").find("ul").css("transform","translateY("+(-gcTimeP)+")")
+	$(".the_audio_right_gc_k_nr").find("ul").css("transform","translateY("+gcTimeP+")")
 	//var pyHeight; //获取偏移量
 	var pd = $(".the_audio_right_gc_k_nr").find("li").hasClass("gcKey"+gcCurrentTime+"");
 	console.log(pd);
