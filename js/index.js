@@ -242,7 +242,7 @@ function gcgd(){
 		//var gcLiHeight = $(".the_audio_right_gc_k_nr").find(".gcKey"+gcCurrentTime+"").height();
 		//pyHeight = 0 - gcLiHeight	
 	}
-	$(".the_audio_right_gc_k_nr").find("ul").css("transform","translateY("+pyHeight+"px)")
+	//$(".the_audio_right_gc_k_nr").find("ul").css("transform","translateY("+pyHeight+"px)")
 }
 
 
