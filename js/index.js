@@ -132,6 +132,9 @@ function hqSong(theChannels){
 			$(".the_audio_left_fm_title").text(""+theGcTitle+"");
 			$(".the_audio_left_fm").find("img").attr("src",""+theGcImg+"");
 			$(".the_audio_left_fm_gs").text(""+theGcArtist+"");
+			
+			//添加历史
+			musicHistory(msg);
 		}
 	})
 	alert(theGcId+"第二次");
@@ -315,6 +318,9 @@ function musicControl(){
 		},
 		theKj:function(){
 			musicControlKJ();
+		},
+		theHistory:function(){
+			musicHistory();
 		}
 	}
 	playZy.theZt();
@@ -447,3 +453,77 @@ function musicControlKJ(){
 		$(".a-audio")[0].pause();
 	})
 }	
+
+//自动加入历史记录
+function musicHistory(tjson){
+	if(typeof(Storage)=="undefined"){
+		alert("本浏览器不支持本地储存，不能使用历史记录，建议使用高版本浏览器")	
+	}
+	else{
+		var songFolder = localStorage.getItem("historyFolder");
+		alert("支持本地存储");
+		if(!songFolder){
+			console.log("这个是历史的")
+			console.log(tjson.song[0])
+			var songFolder = new Array();
+			songFolder.push(tjson.song[0])
+			//console.log("这个是数组中的")
+			//console.log(songFolder)
+			//var str = JSON.stringify(songFolder);
+			var str = arrChangeStr(songFolder)
+			console.log("这个是转换后的数组");
+			console.log(str);
+			localStorage.setItem("historyFolder",str);		
+		}
+		else{
+			console.log(songFolder);
+			//var songFolderArray = JSON.parse(songFolder);
+			var songFolderArray = strChangeArr(songFolder)
+			console.log("这个是转换后的数组再转回数组");
+			console.log(songFolderArray);
+			if(songFolderArray.length<10){
+				songFolderArray.push(tjson.song[0]);
+				var str = arrChangeStr(songFolderArray)
+				localStorage.setItem("historyFolder",str);
+			}	
+			else{
+				songFolderArray.splice(0,1);
+				songFolderArray.push(tjson.song[0]);
+				var str = arrChangeStr(songFolderArray)
+				localStorage.setItem("historyFolder",str);
+			}
+		}
+		//html渲染
+		$(".the_collect_history_k").find("ul").empty();
+		var asongFolder = localStorage.getItem("historyFolder");
+		var asongFolderA = strChangeArr(asongFolder)
+		console.log("html需转换的数组");
+		console.log(asongFolderA);
+		$.each(asongFolderA,function(index,item){
+			console.log("这个是数组获取")
+			console.log(item[index])
+			$(".the_collect_history_k").find("ul").append("<li><span>"+item.title+"</span></li>")
+			
+		})
+		
+	}
+	
+}
+
+//由于localStorage不支持数组的存储，只能通过将数值转换为字符串存储
+function arrChangeStr(theArr){
+	var theStr = JSON.stringify(theArr);
+	return theStr
+}
+function strChangeArr(theStr){
+	var theArr = JSON.parse(theStr);
+	return theArr
+}
+
+function checkMusicReply(musicArr,theMuice){
+	$.each(musicArr,function(index,item){
+		if()
+		
+	})
+	
+}
