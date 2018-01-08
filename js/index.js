@@ -482,6 +482,9 @@ function musicHistory(tjson){
 			console.log("这个是转换后的数组再转回数组");
 			console.log(songFolderArray);
 			if(songFolderArray.length<10){
+				//判断历史记录中是否存在目前的音乐
+				checkMusicReply(songFolderArray,tjson.song[0])
+				
 				songFolderArray.push(tjson.song[0]);
 				var str = arrChangeStr(songFolderArray)
 				localStorage.setItem("historyFolder",str);
@@ -521,9 +524,13 @@ function strChangeArr(theStr){
 }
 
 function checkMusicReply(musicArr,theMuice){
-	$.each(musicArr,function(index,item){
-		if()
-		
-	})
-	
+	console.log("这个是判断中的数组")
+	console.log(musicArr)
+	var pMuisc = new Array();   //判断是否存在的标识，类型为数组，用于存储存在时的值最后做判断
+	var values = $.map(musicArr,function(item){
+		if(item.sid != theMuice.sid){
+			pMuisc.push(item.sid)
+		}
+		console.log(pMuisc)
+	})	
 }
