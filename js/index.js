@@ -483,8 +483,9 @@ function musicHistory(tjson){
 			console.log(songFolderArray);
 			if(songFolderArray.length<10){
 				//判断历史记录中是否存在目前的音乐
-				checkMusicReply(songFolderArray,tjson.song[0])
-				
+				var avalues = checkMusicReply(songFolderArray,tjson.song[0])
+					console.log("这个是检测数组中的value");
+					console.log(avalues);
 				songFolderArray.push(tjson.song[0]);
 				var str = arrChangeStr(songFolderArray)
 				localStorage.setItem("historyFolder",str);
@@ -527,10 +528,15 @@ function checkMusicReply(musicArr,theMuice){
 	console.log("这个是判断中的数组")
 	console.log(musicArr)
 	var pMuisc = new Array();   //判断是否存在的标识，类型为数组，用于存储存在时的值最后做判断
-	var values = $.map(musicArr,function(item){
+	var values = $.grep(musicArr,function(item){
 		if(item.sid != theMuice.sid){
 			pMuisc.push(item.sid)
-		}
-		console.log(pMuisc)
-	})	
+		}		
+		return pMuisc;
+		//console.log(pMuisc)
+	})
+	//测试成功可以返回vlues是数组，最后为了代码的简便性，决定还是放回boolean值
+	//console.log("(内循环)这个是检测数组中的value");
+	//console.log(values);
+	//return values
 }
