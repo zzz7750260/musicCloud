@@ -491,7 +491,7 @@ function musicHistory(tjson){
 				localStorage.setItem("historyFolder",str);
 			}	
 			else{
-				songFolderArray.splice(0,1);
+				songFolderArray.splice(0,1);//删除历史歌曲数组的第一条
 				songFolderArray.push(tjson.song[0]);
 				var str = arrChangeStr(songFolderArray)
 				localStorage.setItem("historyFolder",str);
@@ -527,6 +527,7 @@ function strChangeArr(theStr){
 function checkMusicReply(musicArr,theMuice){
 	console.log("这个是判断中的数组")
 	console.log(musicArr)
+	var isHaveMusic;//判断歌曲是否存在，值为boolean
 	var pMuisc = new Array();   //判断是否存在的标识，类型为数组，用于存储存在时的值最后做判断
 	var values = $.grep(musicArr,function(item){
 		if(item.sid != theMuice.sid){
@@ -539,4 +540,13 @@ function checkMusicReply(musicArr,theMuice){
 	//console.log("(内循环)这个是检测数组中的value");
 	//console.log(values);
 	//return values
+	var isValuesLen = values.length;
+	if(isValuesLen>0){
+		isHaveMusic = true		
+	}
+	else{
+		isHaveMusic = false;
+	}
+	console.log("检测中判断的值："+isHaveMusic);
+	return isHaveMusic;
 }
