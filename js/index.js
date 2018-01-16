@@ -482,13 +482,19 @@ function musicHistory(tjson){
 			console.log("这个是转换后的数组再转回数组");
 			console.log(songFolderArray);
 			if(songFolderArray.length<10){
-				//判断历史记录中是否存在目前的音乐
+				//判断历史记录中是否存在目前的音乐，不过为了简化
 				var avalues = checkMusicReply(songFolderArray,tjson.song[0])
-					console.log("这个是检测数组中的value");
-					console.log(avalues);
-				songFolderArray.push(tjson.song[0]);
-				var str = arrChangeStr(songFolderArray)
-				localStorage.setItem("historyFolder",str);
+				console.log("这个是检测数组中的value");
+				console.log(avalues);
+				if(avalues == false){	
+					songFolderArray.push(tjson.song[0]);
+					var str = arrChangeStr(songFolderArray)
+					localStorage.setItem("historyFolder",str);
+				}
+				else{
+					
+					
+				}
 			}	
 			else{
 				songFolderArray.splice(0,1);//删除历史歌曲数组的第一条
@@ -506,8 +512,7 @@ function musicHistory(tjson){
 		$.each(asongFolderA,function(index,item){
 			console.log("这个是数组获取")
 			console.log(item[index])
-			$(".the_collect_history_k").find("ul").append("<li><span>"+item.title+"</span></li>")
-			
+			$(".the_collect_history_k").find("ul").append("<li><i class='iconfont icon-bofangqibofang iconfont-i-"+item.sid+"'></i><span>"+item.title+"</span></li>")		
 		})
 		
 	}
