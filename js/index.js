@@ -512,7 +512,7 @@ function musicHistory(tjson){
 		$.each(asongFolderA,function(index,item){
 			console.log("这个是数组获取")
 			console.log(item[index])
-			$(".the_collect_history_k").find("ul").append("<li class ='li-muisic-"+item.sid+"' data-iclass='"+item.sid+"' data-surl='"+item.url+"'><i class='iconfont icon-bofangqibofang iconfont-i-"+item.sid+"' ></i><span>"+item.title+"</span><span>"+item.artist+"</span></li>")		
+			$(".the_collect_history_k").find("ul").append("<li class ='li-muisic-"+item.sid+" li_music ' data-iclass='"+item.sid+"' data-surl='"+item.url+"'><i class='iconfont icon-bofangqibofang iconfont-i-"+item.sid+" li_music_i' ></i><span class='li_music_c'>"+item.title+"</span><span class='li_music_a'>"+item.artist+"</span></li>")		
 		})
 		
 	}
