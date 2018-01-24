@@ -492,7 +492,14 @@ function musicHistory(tjson){
 					localStorage.setItem("historyFolder",str);
 				}
 				else{
-					
+					//当存在歌曲时
+					var mId = tjson.song[0].sid;
+					var pd = $(".the_collect_folder_k").find("ul").find("li").hasClass("li-muisic-"+mId+"");
+					console.log("歌曲存在class判断"+ pd);
+					if(pd == true){
+						$(".the_collect_folder_k").find("ul").find(".li_music").css("display","none");
+						$(".the_collect_folder_k").find("ul").find(".li-muisic-"+mId+"").css("display","inline")
+					}
 					
 				}
 			}	
@@ -532,18 +539,20 @@ function strChangeArr(theStr){
 function checkMusicReply(musicArr,theMuice){
 	console.log("这个是判断中的数组")
 	console.log(musicArr)
+	console.log("这个是判断中的音乐")
+	console.log(theMuice)
 	var isHaveMusic;//判断歌曲是否存在，值为boolean
 	var pMuisc = new Array();   //判断是否存在的标识，类型为数组，用于存储存在时的值最后做判断
-	var values = $.grep(musicArr,function(item){
-		if(item.sid != theMuice.sid){
+	var values = $.map(musicArr,function(item){
+		if(item.sid == theMuice.sid){
 			pMuisc.push(item.sid)
 		}		
 		return pMuisc;
 		//console.log(pMuisc)
 	})
 	//测试成功可以返回vlues是数组，最后为了代码的简便性，决定还是放回boolean值
-	//console.log("(内循环)这个是检测数组中的value");
-	//console.log(values);
+	console.log("(内循环)这个是检测数组中的value");
+	console.log(values);
 	//return values
 	var isValuesLen = values.length;
 	if(isValuesLen>0){
