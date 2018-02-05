@@ -494,20 +494,35 @@ function musicHistory(tjson){
 				else{
 					//当存在歌曲时
 					var mId = tjson.song[0].sid;
-					var pd = $(".the_collect_folder_k").find("ul").find("li").hasClass("li-muisic-"+mId+"");
-					console.log("歌曲存在class判断"+ pd);
-					if(pd == true){
-						$(".the_collect_folder_k").find("ul").find(".li_music").css("display","none");
-						$(".the_collect_folder_k").find("ul").find(".li-muisic-"+mId+"").css("display","inline")
-					}
+					isExistControl(mId,"the_collect_history_k")
+					//利用isExistControl()函数进行判断
+					//$(".the_collect_history_k").find("ul").find("li").removeClass("li_music_active");
+					//$(".the_collect_history_k").find("ul").find(".li-muisic-"+mId+"").addClass("li_music_active");
+					//不用判断，存在时sid直接赋值
+					//var pd = $(".the_collect_history_k").find("ul").find("li").hasClass("li-muisic-"+mId+"");					
+					//console.log("歌曲存在class判断"+ pd);
+					//if(pd == true){
+					//	$(".the_collect_history_k").find("ul").find(".li_music").css("display","none");
+					//	$(".the_collect_history_k").find("ul").find(".li-muisic-"+mId+"").css("display","inline")
+					//	}
 					
 				}
 			}	
 			else{
-				songFolderArray.splice(0,1);//删除历史歌曲数组的第一条
-				songFolderArray.push(tjson.song[0]);
-				var str = arrChangeStr(songFolderArray)
-				localStorage.setItem("historyFolder",str);
+				//判断歌曲是否存在，值为boolean
+				var avalues = checkMusicReply(songFolderArray,tjson.song[0])
+				console.log("这个是检测数组中的value");
+				console.log(avalues);
+				if(avalues == false){							
+					songFolderArray.splice(0,1);//删除历史歌曲数组的第一条
+					songFolderArray.push(tjson.song[0]);
+					var str = arrChangeStr(songFolderArray)
+					localStorage.setItem("historyFolder",str);
+				}
+				else{
+					var mId = tjson.song[0].sid;
+					isExistControl(mId,"the_collect_history_k")				
+				}
 			}
 		}
 		//html渲染
@@ -563,4 +578,20 @@ function checkMusicReply(musicArr,theMuice){
 	}
 	console.log("检测中判断的值："+isHaveMusic);
 	return isHaveMusic;
+}
+
+//根据检测值返回具体的操作
+//@sValue:判断是否存在的sid值，用于根据sid选择对应的class
+//@domeClass:选择demo的父类class
+function isExistControl(sValue,domeClass){	
+	var pd = $("."+domeClass+"").find("ul").find("li").hasClass("li-muisic-"+sValue+"");					
+	console.log("歌曲存在class判断"+ pd);
+	console.log("sValue的值："+sValue);
+	console.log("domeClass的值"+domeClass);
+	if(pd == true){
+		$("."+domeClass+"").find("ul").find(".li_music").removeClass("li_music_active");
+		$("."+domeClass+"").find("ul").find(".li-muisic-"+sValue+"").addClass("li_music_active");
+		$("."+domeClass+"").find("ul").find(".li_music_i").removeClass("li_music_i_active")
+		$("."+domeClass+"").find("ul").find(".iconfont-i-"+sValue+"").addClass("li_music_i_active");
+	}		
 }
