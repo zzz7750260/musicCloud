@@ -103,7 +103,6 @@ function hqSong(theChannels){
 	var theGcTitle; //歌的歌名
 	var theGcArtist; //歌的专辑
 	var theGcSrc  //歌的地址
-	
 	$(".the_audio_right_gc_k_nr").find("ul").empty(); //当切换歌时将原来的歌词清空
 	
 	alert(theChannels);
@@ -134,9 +133,12 @@ function hqSong(theChannels){
 			$(".the_audio_left_fm_gs").text(""+theGcArtist+"");
 			
 			//添加历史
-			musicHistory(msg);
+			musicHistory(msg);			
+			//绑定收藏事件，将歌曲添加到收藏栏中
+			$('.the_control_collection').on('click',musicCollections(msg.song[0]))	
 		}
 	})
+
 	alert(theGcId+"第二次");
 	//ajax获取对应歌曲的歌词
 	$.ajax({
@@ -490,6 +492,7 @@ function musicHistory(tjson){
 					songFolderArray.push(tjson.song[0]);
 					var str = arrChangeStr(songFolderArray)
 					localStorage.setItem("historyFolder",str);
+					localStorage.setItem("a","aaaa")
 				}
 				else{
 					//当存在歌曲时
@@ -521,7 +524,7 @@ function musicHistory(tjson){
 				}
 				else{
 					var mId = tjson.song[0].sid;
-					isExistControl(mId,"the_collect_history_k")				
+					isExistControl(mId,".the_collect_history_k")				
 				}
 			}
 		}
@@ -562,7 +565,7 @@ function checkMusicReply(musicArr,theMuice){
 		if(item.sid == theMuice.sid){
 			pMuisc.push(item.sid)
 		}		
-		return pMuisc;
+		//return pMuisc;
 		//console.log(pMuisc)
 	})
 	//测试成功可以返回vlues是数组，最后为了代码的简便性，决定还是放回boolean值
@@ -584,14 +587,74 @@ function checkMusicReply(musicArr,theMuice){
 //@sValue:判断是否存在的sid值，用于根据sid选择对应的class
 //@domeClass:选择demo的父类class
 function isExistControl(sValue,domeClass){	
-	var pd = $("."+domeClass+"").find("ul").find("li").hasClass("li-muisic-"+sValue+"");					
+	var pd = $(domeClass).find("ul").find("li").hasClass("li-muisic-"+sValue+"");					
 	console.log("歌曲存在class判断"+ pd);
 	console.log("sValue的值："+sValue);
 	console.log("domeClass的值"+domeClass);
 	if(pd == true){
-		$("."+domeClass+"").find("ul").find(".li_music").removeClass("li_music_active");
-		$("."+domeClass+"").find("ul").find(".li-muisic-"+sValue+"").addClass("li_music_active");
-		$("."+domeClass+"").find("ul").find(".li_music_i").removeClass("li_music_i_active")
-		$("."+domeClass+"").find("ul").find(".iconfont-i-"+sValue+"").addClass("li_music_i_active");
+		$(domeClass).find("ul").find(".li_music").removeClass("li_music_active");
+		$(domeClass).find("ul").find(".li-muisic-"+sValue+"").addClass("li_music_active");
+		$(domeClass).find("ul").find(".li_music_i").removeClass("li_music_i_active")
+		$(domeClass).find("ul").find(".iconfont-i-"+sValue+"").addClass("li_music_i_active");
 	}		
+}
+
+//点击收藏音乐
+function musicCollections(tjson){
+	console.log("===========添加事件获取的参数==============");
+	console.log(tjson)
+	alert("绑定添加点击")
+	var theMuiceArrayStr,  //音乐收藏由数组转成字符串
+		theMuiceArrayArr;  //音乐收藏由字符串转成数组
+		if(typeof(Storage)=="undefined"){
+		alert("本浏览器不支持本地储存，不能使用历史记录，建议使用高版本浏览器")	
+	}
+	else{
+		var theMuiceArray = localStorage.getItem("musicCollection");
+		console.log("===============获取收藏夹里面的数组==============")
+		console.log(theMuiceArray)
+		if(!theMuiceArray){
+			theMuiceArray = new Array(); 
+			theMuiceArray.push(tjson);
+			theMuiceArrayStr = arrChangeStr(theMuiceArray)
+			localStorage.setItem("musicCollection",theMuiceArrayStr);
+		}
+		else{	
+			theMuiceArrayArr = strChangeArr(theMuiceArray);
+			if(theMuiceArrayArr.length<10){	
+				//检测是否存在
+				var isExist = checkMusicReply(theMuiceArrayArr,tjson);
+				if(isExist == false){
+					theMuiceArrayArr.push(tjson);
+					theMuiceArrayStr = arrChangeStr(theMuiceArrayArr);
+					localStorage.setItem("musicCollection",theMuiceArrayStr);
+				}
+
+			}
+			else{
+				var isExist = checkMusicReply(theMuiceArrayArr,tjson);
+				if(isExist == false){								
+					console.log("=================收藏夹转换后的数组=================")
+					console.log(theMuiceArrayArr);
+					theMuiceArrayArr.splice(0,1);//删除歌曲收藏数组的第一条
+					theMuiceArrayArr.push(tjson);
+					theMuiceArrayStr = arrChangeStr(theMuiceArray)
+					localStorage.setItem("musicCollection",theMuiceArrayStr);	
+				}
+			}
+		}
+	}
+
+	//html渲染
+	var htmlMusicString = localStorage.getItem("musicCollection");
+	var htmlMusicArray = strChangeArr(htmlMusicString);
+	$(".the_collect_folder_k").find("ul").empty();
+	
+	//遍历数组，渲染html
+	$.each(htmlMusicArray,function(index,item){
+		console.log("这个是收藏夹数组获取")
+		console.log(item[index])
+		$(".the_collect_folder_k").find("ul").append("<li class ='li-muisic-"+item.sid+" li_music ' data-iclass='"+item.sid+"' data-surl='"+item.url+"'><i class='iconfont icon-bofangqibofang iconfont-i-"+item.sid+" li_music_i' ></i><span class='li_music_c'>"+item.title+"</span><span class='li_music_a'>"+item.artist+"</span></li>");		
+	})
+		
 }
