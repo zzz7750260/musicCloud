@@ -656,5 +656,7 @@ function musicCollections(tjson){
 		console.log(item[index])
 		$(".the_collect_folder_k").find("ul").append("<li class ='li-muisic-"+item.sid+" li_music ' data-iclass='"+item.sid+"' data-surl='"+item.url+"'><i class='iconfont icon-bofangqibofang iconfont-i-"+item.sid+" li_music_i' ></i><span class='li_music_c'>"+item.title+"</span><span class='li_music_a'>"+item.artist+"</span></li>");		
 	})
-		
+	
+	//判断现在播放的在收藏夹中是否存在，存在的添加播放的标志
+	isExistControl(tjson.sid,".the_collect_folder_k");	
 }
