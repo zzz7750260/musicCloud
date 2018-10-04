@@ -643,7 +643,7 @@ function musicCollections(tjson){
 			if(theMuiceArrayArr.length<10){	
 				//检测是否存在
 				//var isExist = checkMusicReply(theMuiceArrayArr,tjson);
-				var avalues = checkMusicExist(theMuiceArrayArr,tjson);
+				var isExist = checkMusicExist(theMuiceArrayArr,tjson);
 				if(isExist == false){
 					theMuiceArrayArr.push(tjson);
 					theMuiceArrayStr = arrChangeStr(theMuiceArrayArr);
@@ -652,7 +652,7 @@ function musicCollections(tjson){
 
 			}
 			else{
-				var avalues = checkMusicExist(theMuiceArrayArr,tjson);
+				var isExist = checkMusicExist(theMuiceArrayArr,tjson);
 				if(isExist == false){								
 					console.log("=================收藏夹转换后的数组=================")
 					console.log(theMuiceArrayArr);
