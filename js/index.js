@@ -652,7 +652,7 @@ function musicCollections(tjson){
 		else{	
 			theMuiceArrayArr = strChangeArr(theMuiceArray);
 			console.log("============转换后收藏夹的数组==============");
-			console.log(theMuiceArrayArr);
+			console.log(theMuiceArray);
 			console.log("数组长度:"+theMuiceArrayArr.length);
 			if(theMuiceArrayArr.length<10){	
 				//检测是否存在
