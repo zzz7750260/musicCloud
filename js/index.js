@@ -600,6 +600,7 @@ function checkMusicExist(musicArray,msid){
 			isMusicExist = isMusicExist + 1;
 		}
 	})
+	console.log("歌曲存在数：" + isMusicExist);
 	
 	if(isMusicExist>0){
 		musicExist == true;
@@ -652,6 +653,7 @@ function musicCollections(tjson){
 			theMuiceArrayArr = strChangeArr(theMuiceArray);
 			console.log("============转换后收藏夹的数组==============");
 			console.log(theMuiceArrayArr);
+			console.log("数组长度:"+theMuiceArrayArr.length);
 			if(theMuiceArrayArr.length<10){	
 				//检测是否存在
 				//var isExist = checkMusicReply(theMuiceArrayArr,tjson);
