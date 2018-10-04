@@ -590,19 +590,24 @@ function checkMusicReply(musicArr,theMuice){
 //musicArray为音乐的分组串
 function checkMusicExist(musicArray,msid){
 	//遍历数组，检测是否存在
-	console.log("=========传递判断进来的数组============");
+	console.log("=========传递判断进来的数组,收藏夹============");
 	console.log(musicArray);
 	
-	var isMusicExist; //设置音乐是否存在,布尔值
+	var isMusicExist = 0; //设置音乐是否存在,累计值
+	var musicExist; //设置音乐是否存在，布尔值
 	$.each(musicArray,function(key,item){
 		if(item.sid == msid){
-			isMusicExist == true;
-		}
-		else{
-			isMusicExist == false;
+			isMusicExist = isMusicExist + 1;
 		}
 	})
-	return isMusicExist;
+	
+	if(isMusicExist>0){
+		musicExist == true;
+	}
+	else{
+		musicExist == false;
+	}
+	return musicExist;
 }
 
 //根据检测值返回具体的操作
