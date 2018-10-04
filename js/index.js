@@ -485,7 +485,8 @@ function musicHistory(tjson){
 			console.log(songFolderArray);
 			if(songFolderArray.length<10){
 				//判断历史记录中是否存在目前的音乐，不过为了简化
-				var avalues = checkMusicReply(songFolderArray,tjson.song[0])
+				//var avalues = checkMusicReply(songFolderArray,tjson.song[0])
+				var avalues = checkMusicExist(songFolderArray,tjson.song[0]);				
 				console.log("这个是检测数组中的value");
 				console.log(avalues);
 				if(avalues == false){	
@@ -513,7 +514,8 @@ function musicHistory(tjson){
 			}	
 			else{
 				//判断歌曲是否存在，值为boolean
-				var avalues = checkMusicReply(songFolderArray,tjson.song[0])
+				//var avalues = checkMusicReply(songFolderArray,tjson.song[0])
+				var avalues = checkMusicExist(songFolderArray,tjson.song[0]);
 				console.log("这个是检测数组中的value");
 				console.log(avalues);
 				if(avalues == false){							
@@ -583,6 +585,23 @@ function checkMusicReply(musicArr,theMuice){
 	return isHaveMusic;
 }
 
+//检测音乐是否存在的第二种方法
+//sid:为音乐的id
+//musicArray为音乐的分组串
+function checkMusicExist(musicArray,msid){
+	//遍历数组，检测是否存在
+	var isMusicExist; //设置音乐是否存在,布尔值
+	$.each(musicArray,function(key,item){
+		if(item.sid == msid){
+			isMusicExist == true;
+		}
+		else{
+			isMusicExist == false;
+		}
+	})
+	return isMusicExist;
+}
+
 //根据检测值返回具体的操作
 //@sValue:判断是否存在的sid值，用于根据sid选择对应的class
 //@domeClass:选择demo的父类class
@@ -623,7 +642,8 @@ function musicCollections(tjson){
 			theMuiceArrayArr = strChangeArr(theMuiceArray);
 			if(theMuiceArrayArr.length<10){	
 				//检测是否存在
-				var isExist = checkMusicReply(theMuiceArrayArr,tjson);
+				//var isExist = checkMusicReply(theMuiceArrayArr,tjson);
+				var avalues = checkMusicExist(theMuiceArrayArr,tjson);
 				if(isExist == false){
 					theMuiceArrayArr.push(tjson);
 					theMuiceArrayStr = arrChangeStr(theMuiceArrayArr);
@@ -632,7 +652,7 @@ function musicCollections(tjson){
 
 			}
 			else{
-				var isExist = checkMusicReply(theMuiceArrayArr,tjson);
+				var avalues = checkMusicExist(theMuiceArrayArr,tjson);
 				if(isExist == false){								
 					console.log("=================收藏夹转换后的数组=================")
 					console.log(theMuiceArrayArr);
