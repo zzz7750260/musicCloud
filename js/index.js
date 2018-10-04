@@ -632,18 +632,21 @@ function musicCollections(tjson){
 		alert("本浏览器不支持本地储存，不能使用历史记录，建议使用高版本浏览器")	
 	}
 	else{
-		var theMuiceStr = localStorage.getItem("musicCollection");
-		theMuiceArray = strChangeArr(theMuiceStr);
+		var theMuiceArray = localStorage.getItem("musicCollection");
+		
+		//theMuiceArray = strChangeArr(theMuiceStr);
 		console.log("===============获取收藏夹里面的数组==============")
 		console.log(theMuiceArray)
 		if(!theMuiceArray){
 			theMuiceArray = new Array(); 
 			theMuiceArray.push(tjson);
-			theMuiceArrayStr = arrChangeStr(theMuiceArray)
+			theMuiceArrayStr = arrChangeStr(theMuiceArray);
 			localStorage.setItem("musicCollection",theMuiceArrayStr);
 		}
 		else{	
 			theMuiceArrayArr = strChangeArr(theMuiceArray);
+			console.log("============转换后收藏夹的数组==============");
+			console.log(theMuiceArrayArr);
 			if(theMuiceArrayArr.length<10){	
 				//检测是否存在
 				//var isExist = checkMusicReply(theMuiceArrayArr,tjson);
