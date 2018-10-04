@@ -590,6 +590,9 @@ function checkMusicReply(musicArr,theMuice){
 //musicArray为音乐的分组串
 function checkMusicExist(musicArray,msid){
 	//遍历数组，检测是否存在
+	console.log("=========传递判断进来的数组============");
+	console.log(musicArray);
+	
 	var isMusicExist; //设置音乐是否存在,布尔值
 	$.each(musicArray,function(key,item){
 		if(item.sid == msid){
