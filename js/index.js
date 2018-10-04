@@ -632,7 +632,8 @@ function musicCollections(tjson){
 		alert("本浏览器不支持本地储存，不能使用历史记录，建议使用高版本浏览器")	
 	}
 	else{
-		var theMuiceArray = localStorage.getItem("musicCollection");
+		var theMuiceStr = localStorage.getItem("musicCollection");
+		theMuiceArray = strChangeArr(theMuiceStr);
 		console.log("===============获取收藏夹里面的数组==============")
 		console.log(theMuiceArray)
 		if(!theMuiceArray){
