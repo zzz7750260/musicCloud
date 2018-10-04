@@ -486,7 +486,7 @@ function musicHistory(tjson){
 			if(songFolderArray.length<10){
 				//判断历史记录中是否存在目前的音乐，不过为了简化
 				//var avalues = checkMusicReply(songFolderArray,tjson.song[0])
-				var avalues = checkMusicExist(songFolderArray,tjson.song[0]);				
+				var avalues = checkMusicExist(songFolderArray,tjson.song[0].sid);				
 				console.log("这个是检测数组中的value");
 				console.log(avalues);
 				if(avalues == false){	
@@ -515,7 +515,7 @@ function musicHistory(tjson){
 			else{
 				//判断歌曲是否存在，值为boolean
 				//var avalues = checkMusicReply(songFolderArray,tjson.song[0])
-				var avalues = checkMusicExist(songFolderArray,tjson.song[0]);
+				var avalues = checkMusicExist(songFolderArray,tjson.song[0].sid);
 				console.log("这个是检测数组中的value");
 				console.log(avalues);
 				if(avalues == false){							
@@ -643,7 +643,7 @@ function musicCollections(tjson){
 			if(theMuiceArrayArr.length<10){	
 				//检测是否存在
 				//var isExist = checkMusicReply(theMuiceArrayArr,tjson);
-				var isExist = checkMusicExist(theMuiceArrayArr,tjson);
+				var isExist = checkMusicExist(theMuiceArrayArr,tjson.sid);
 				if(isExist == false){
 					theMuiceArrayArr.push(tjson);
 					theMuiceArrayStr = arrChangeStr(theMuiceArrayArr);
@@ -652,7 +652,7 @@ function musicCollections(tjson){
 
 			}
 			else{
-				var isExist = checkMusicExist(theMuiceArrayArr,tjson);
+				var isExist = checkMusicExist(theMuiceArrayArr,tjson.sid);
 				if(isExist == false){								
 					console.log("=================收藏夹转换后的数组=================")
 					console.log(theMuiceArrayArr);
