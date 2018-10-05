@@ -551,7 +551,8 @@ function arrChangeStr(theArr){
 	var theStr = JSON.stringify(theArr);
 	return theStr
 }
-function (theStr){
+
+function strChangeArr(theStr){
 	var theArr = JSON.parse(theStr);
 	return theArr
 }
