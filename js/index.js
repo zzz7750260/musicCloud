@@ -135,7 +135,9 @@ function hqSong(theChannels){
 			//添加历史
 			musicHistory(msg);			
 			//绑定收藏事件，将歌曲添加到收藏栏中
-			$('.the_control_collection').on('click',musicCollections(msg.song[0]))	
+			$('.the_control_collection').on('click',function(){
+				musicCollections(msg.song[0]);
+			})	
 		}
 	})
 
@@ -635,6 +637,7 @@ function isExistControl(sValue,domeClass){
 
 //点击收藏音乐
 function musicCollections(tjson){
+	//alert("点击音乐收藏");
 	console.log("===========添加事件获取的参数==============");
 	console.log(tjson)
 	alert("绑定添加点击")
