@@ -598,7 +598,8 @@ function checkMusicExist(musicArray,msid){
 	var musicExist; //设置音乐是否存在，布尔值
 	$.each(musicArray,function(key,item){
 		console.log("key:" + key);
-		console.log("item" + item);
+		console.log("item=====");
+		console.log(item);
 		if(item.sid == msid){
 			isMusicExist = isMusicExist + 1;
 		}
