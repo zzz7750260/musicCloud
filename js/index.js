@@ -612,6 +612,8 @@ function checkMusicExist(musicArray,msid){
 	else{
 		musicExist == false;
 	}
+	console.log("音乐是否存在:");
+	console.log(musicExist);
 	return musicExist;
 }
 
