@@ -500,7 +500,7 @@ function musicHistory(tjson){
 				else{
 					//当存在歌曲时
 					var mId = tjson.song[0].sid;
-					isExistControl(mId,"the_collect_history_k")
+					//isExistControl(mId,"the_collect_history_k")
 					//利用isExistControl()函数进行判断
 					//$(".the_collect_history_k").find("ul").find("li").removeClass("li_music_active");
 					//$(".the_collect_history_k").find("ul").find(".li-muisic-"+mId+"").addClass("li_music_active");
@@ -528,7 +528,7 @@ function musicHistory(tjson){
 				}
 				else{
 					var mId = tjson.song[0].sid;
-					isExistControl(mId,".the_collect_history_k")				
+					//isExistControl(mId,".the_collect_history_k")				
 				}
 			}
 		}
@@ -544,6 +544,7 @@ function musicHistory(tjson){
 			$(".the_collect_history_k").find("ul").append("<li class ='li-muisic-"+item.sid+" li_music ' data-iclass='"+item.sid+"' data-surl='"+item.url+"'><i class='iconfont icon-bofangqibofang iconfont-i-"+item.sid+" li_music_i' ></i><span class='li_music_c'>"+item.title+"</span><span class='li_music_a'>"+item.artist+"</span></li>")		
 		})
 		
+		isExistControl(mId,".the_collect_history_k")
 	}
 	
 }
