@@ -606,11 +606,11 @@ function checkMusicExist(musicArray,msid){
 	})
 	console.log("歌曲存在数：" + isMusicExist);
 	
-	if(isMusicExist>0){
-		musicExist == true;
+	if(isMusicExist > 0){
+		musicExist = true;
 	}
 	else{
-		musicExist == false;
+		musicExist = false;
 	}
 	console.log("音乐是否存在:");
 	console.log(musicExist);
