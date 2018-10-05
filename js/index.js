@@ -551,7 +551,7 @@ function arrChangeStr(theArr){
 	var theStr = JSON.stringify(theArr);
 	return theStr
 }
-function strChangeArr(theStr){
+function (theStr){
 	var theArr = JSON.parse(theStr);
 	return theArr
 }
@@ -596,6 +596,8 @@ function checkMusicExist(musicArray,msid){
 	var isMusicExist = 0; //设置音乐是否存在,累计值
 	var musicExist; //设置音乐是否存在，布尔值
 	$.each(musicArray,function(key,item){
+		console.log("key:" + key);
+		console.log("item" + item);
 		if(item.sid == msid){
 			isMusicExist = isMusicExist + 1;
 		}
