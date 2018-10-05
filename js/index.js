@@ -682,7 +682,7 @@ function musicCollections(tjson){
 					console.log(theMuiceArrayArr);
 					theMuiceArrayArr.splice(0,1);//删除歌曲收藏数组的第一条
 					theMuiceArrayArr.push(tjson);
-					theMuiceArrayStr = arrChangeStr(theMuiceArray)
+					theMuiceArrayStr = arrChangeStr(theMuiceArrayArr)
 					localStorage.setItem("musicCollection",theMuiceArrayStr);	
 				}
 			}
