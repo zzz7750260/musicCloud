@@ -141,9 +141,12 @@ function hqSong(theChannels){
 			//绑定收藏事件，将歌曲添加到收藏栏中（但是这样会重复绑定歌曲）
 			//解决方案,将得到的歌曲存储为全局变量，然后再进行收藏
 			//解决方案2，不用绑定事件
-			$('.the_control_collection').click(function(){
-				musicCollections(msg.song[0]);
-			})	
+			//$('.the_control_collection').click(function(){
+			//	musicCollections(msg.song[0]);
+			//})
+			//$('.the_control_collection').on("click",function(){
+			//	musicCollections(msg.song[0]);
+			//})			
 		}
 	})
 
@@ -332,6 +335,11 @@ function musicControl(){
 		theHistory:function(){
 			musicHistory();
 		},
+		theCollection:function(){
+			$('.the_control_collection').click(function(){
+				musicCollections(that.song);
+			})
+		}
 	}
 	playZy.theZt();
 	playZy.theTd();	
