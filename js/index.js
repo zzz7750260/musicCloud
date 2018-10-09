@@ -97,6 +97,7 @@ function getChannels(){
 
 //根据频道获取歌曲（包括随机）
 function hqSong(theChannels){
+	that = this; // 设置全局变量
 	var theGcId;   //歌的id，只要根据id获取歌词
 	var theGcIrc;  //歌词地址
 	var theGcImg;  //歌的图片地址
@@ -133,9 +134,14 @@ function hqSong(theChannels){
 			$(".the_audio_left_fm_gs").text(""+theGcArtist+"");
 			
 			//添加历史
-			musicHistory(msg);			
-			//绑定收藏事件，将歌曲添加到收藏栏中
-			$('.the_control_collection').on('click',function(){
+			musicHistory(msg);		
+			//将当前的音乐转换为全局变量
+			that.song = msg.song[0];
+			
+			//绑定收藏事件，将歌曲添加到收藏栏中（但是这样会重复绑定歌曲）
+			//解决方案,将得到的歌曲存储为全局变量，然后再进行收藏
+			//解决方案2，不用绑定事件
+			$('.the_control_collection').click(function(){
 				musicCollections(msg.song[0]);
 			})	
 		}
@@ -325,7 +331,7 @@ function musicControl(){
 		},
 		theHistory:function(){
 			musicHistory();
-		}
+		},
 	}
 	playZy.theZt();
 	playZy.theTd();	
@@ -645,7 +651,7 @@ function musicCollections(tjson){
 	alert("绑定添加点击")
 	var theMuiceArrayStr,  //音乐收藏由数组转成字符串
 		theMuiceArrayArr;  //音乐收藏由字符串转成数组
-		if(typeof(Storage)=="undefined"){
+	if(typeof(Storage)=="undefined"){
 		alert("本浏览器不支持本地储存，不能使用历史记录，建议使用高版本浏览器")	
 	}
 	else{
