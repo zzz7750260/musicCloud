@@ -345,6 +345,7 @@ function musicControl(){
 	playZy.theTd();	
 	playZy.theYd();	
 	playZy.theKj();	
+	playZy.theCollection();
 }
 
 function musicControlZt(){
